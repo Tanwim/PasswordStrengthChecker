@@ -149,7 +149,6 @@ public class PasswordStrengthChecker {
             strength += 10;
         }
 
-        // Password length evaluation
         if (length <= 4) strength += 10;
         else if (length <= 8) strength += 20;
         else strength += 30;
@@ -187,20 +186,16 @@ public class PasswordStrengthChecker {
         if (!hasDigit) suggestion.append("Number, ");
         if (!hasSpecial) suggestion.append("Special Character, ");
 
-        // Suggest at least 2 of each type if only 1 is used
         if (upperCount == 1) suggestion.append("Use at least 2 Uppercase Letters, ");
         if (lowerCount == 1) suggestion.append("Use at least 2 Lowercase Letters, ");
         if (digitCount == 1) suggestion.append("Use at least 2 Digits, ");
         if (specialCount == 1) suggestion.append("Use at least 2 Special Characters, ");
 
-        // Suggest length improvements
         if (length < 9) suggestion.append("Use a password with at least 9 characters, ");
 
-        // Removing the last comma and space
         if (suggestion.length() > 0) {
             suggestion.setLength(suggestion.length() - 2); 
         }
-
         return suggestion.toString();
     }
 }
